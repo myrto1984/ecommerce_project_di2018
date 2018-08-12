@@ -1,7 +1,14 @@
 APPLICATION PROPERTIES
 ------------------------
-charge_per_km
+charge_per_km=0.60 (0.68 € είναι το ταξί)
+vat=0.24
+db_name=alterUber_DB
+db_user=ecommerce
+dd_user_pw=eCom@di2018
 
+ENUMERATIONS
+--------------
+LUGGAGE_VOLUME = ["χειραποσκευές","1-3 βαλίτσες","πάνω από 3 βαλίτσες"]
 
 
 CONTROLLERS
@@ -20,6 +27,7 @@ addCreditCard
 deleteCreditCard
 addAddress
 updateAddress
+deleteAddress
 addUserRole
 getRoles
 
