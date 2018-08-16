@@ -37,14 +37,14 @@ INSERT INTO `alterUber_DB`.`roles` (`role`) VALUES ('admin');
 CREATE TABLE IF NOT EXISTS `alterUber_DB`.`user` (
   `username` VARCHAR(20) NOT NULL,
   `password` VARCHAR(20) NOT NULL,
-  `firstname` VARCHAR(100) NULL,
-  `lastname` VARCHAR(100) NULL,
+  `firstname` VARCHAR(100) NULL DEFAULT NULL,
+  `lastname` VARCHAR(100) NULL DEFAULT NULL,
   `email` VARCHAR(50) NOT NULL,
-  `telephone` VARCHAR(14) NULL,
-  `photo` TEXT NULL,
-  `role` VARCHAR(10) NULL,
+  `telephone` VARCHAR(14) NULL DEFAULT NULL,
+  `photo` TEXT NULL DEFAULT NULL,
+  `role` VARCHAR(10) NOT NULL,
   `registrationDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-  `deletedAccount` TINYINT(1) UNSIGNED NULL DEFAULT '0',
+  `deletedAccount` TINYINT(1) UNSIGNED NULL DEFAULT 0,
   PRIMARY KEY (`username`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC),
   INDEX `fk_user_role_idx` (`role` ASC),
@@ -103,14 +103,14 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `alterUber_DB`.`car` (
   `circulationNo` VARCHAR(10) NOT NULL,
-  `maxPassengers` TINYINT(2) UNSIGNED NOT NULL,
+  `maxPassengers` TINYINT(2) UNSIGNED NOT NULL DEFAULT 4,
   `maxLoad` FLOAT NOT NULL,
   `manufacturer` VARCHAR(45) NOT NULL,
   `model` VARCHAR(255) NOT NULL,
   `colour` VARCHAR(45) NOT NULL,
   `productionYear` INT(4) UNSIGNED NOT NULL,
   `registrationDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-  `deleted` TINYINT(1) UNSIGNED NULL DEFAULT '0',
+  `deleted` TINYINT(1) UNSIGNED NULL DEFAULT 0,
   PRIMARY KEY (`circulationNo`))
 ENGINE = InnoDB;
 
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `alterUber_DB`.`driver_car` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `driver` VARCHAR(20) NOT NULL,
   `carCircNo` VARCHAR(10) NOT NULL,
-  `deleted` TINYINT(1) UNSIGNED NULL DEFAULT '0',
+  `deleted` TINYINT(1) UNSIGNED NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   INDEX `fk_driver_car_driver_idx` (`driver` ASC),
   INDEX `fk_driver_car_car_idx` (`carCircNo` ASC),
@@ -147,9 +147,9 @@ CREATE TABLE IF NOT EXISTS `alterUber_DB`.`trip` (
   `passenger` VARCHAR(20) NOT NULL,
   `startPoint` VARCHAR(100) NOT NULL,
   `destination` VARCHAR(100) NOT NULL,
-  `noOfStops` TINYINT(2) UNSIGNED NULL DEFAULT '0',
+  `noOfStops` TINYINT(2) UNSIGNED NULL DEFAULT 0,
   `requestDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-  `noOfPassengers` TINYINT(2) UNSIGNED NULL DEFAULT '1',
+  `noOfPassengers` TINYINT(2) UNSIGNED NULL DEFAULT 1,
   `luggageCat` VARCHAR(20) NOT NULL,
   `responseDate` DATETIME NULL DEFAULT NULL,
   `driverCar` INT UNSIGNED NULL DEFAULT NULL,
@@ -160,8 +160,8 @@ CREATE TABLE IF NOT EXISTS `alterUber_DB`.`trip` (
   `passengerComments` TEXT NULL DEFAULT NULL,
   `driverRatingOfPassenger` TINYINT(1) UNSIGNED NULL DEFAULT NULL,
   `driverComments` TEXT NULL DEFAULT NULL,
-  `cancelledByPassenger` TINYINT(1) UNSIGNED NULL DEFAULT '0',
-  `cancelledByDriver` TINYINT(1) UNSIGNED NULL DEFAULT '0',
+  `cancelledByPassenger` TINYINT(1) UNSIGNED NULL DEFAULT 0,
+  `cancelledByDriver` TINYINT(1) UNSIGNED NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   INDEX `fk_trip_passenger_idx` (`passenger` ASC),
   INDEX `fk_trip_driverCar_idx` (`driverCar` ASC),
@@ -182,15 +182,15 @@ ENGINE = InnoDB;
 -- Table `alterUber_DB`.`invoice`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `alterUber_DB`.`invoice` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `invoiceId` VARCHAR(45) NOT NULL,
   `tripId` INT UNSIGNED NOT NULL,
   `dateIssued` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `chargePerKm` FLOAT NOT NULL,
   `vat` FLOAT NOT NULL,
   `distanceTravelled` FLOAT NOT NULL,
   `totalCharge` FLOAT NOT NULL,
-  `paidInCash` TINYINT(1) UNSIGNED NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
+  `paidInCash` TINYINT(1) UNSIGNED NULL DEFAULT 1,
+  PRIMARY KEY (`invoiceId`),
   INDEX `fk_invoice_tripId_idx` (`tripId` ASC),
   CONSTRAINT `fk_invoice_tripId`
     FOREIGN KEY (`tripId`)
@@ -205,7 +205,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `alterUber_DB`.`credit_card_in_invoice` (
   `cardNo` VARCHAR(20) NOT NULL,
-  `invoiceId` INT UNSIGNED NOT NULL,
+  `invoiceId` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`cardNo`, `invoiceId`),
   INDEX `fk_credit_card_in_invoice_invoice_idx` (`invoiceId` ASC),
   INDEX `fk_credit_card_in_invoice_card_idx` (`cardNo` ASC),
@@ -216,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `alterUber_DB`.`credit_card_in_invoice` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_credit_card_in_invoice_invoice`
     FOREIGN KEY (`invoiceId`)
-    REFERENCES `alterUber_DB`.`invoice` (`id`)
+    REFERENCES `alterUber_DB`.`invoice` (`invoiceId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
