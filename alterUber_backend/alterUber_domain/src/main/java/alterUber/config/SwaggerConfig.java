@@ -1,6 +1,7 @@
 package alterUber.config;
 
-import alterUber.controllers.UserController;
+import alterUber.controllers.RoleControllers;
+import alterUber.controllers.UserControllers;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +20,8 @@ import java.util.ArrayList;
 @Configuration
 @EnableSwagger2
 @EnableWebMvc
-@ComponentScan(basePackageClasses = { UserController.class })
+@ComponentScan(basePackageClasses = { UserControllers.class,
+                                      RoleControllers.class })
 public class SwaggerConfig {
 
     @Bean

@@ -17,6 +17,7 @@ public class Trip implements Serializable {
   private long id;
 
   @ManyToOne
+  @JoinColumn(name = "passenger")
   private User passenger;
 
   private String startPoint;
@@ -37,6 +38,7 @@ public class Trip implements Serializable {
   private Date responseDate;
 
   @ManyToOne
+  @JoinColumn(name = "driverCar")
   private DriverCar driverCar;
 
   @Temporal(TemporalType.TIMESTAMP)
@@ -56,9 +58,6 @@ public class Trip implements Serializable {
 
   @Column(name = "cancelledByDriver", columnDefinition = "TINYINT(1) UNSIGNED NULL DEFAULT 0")
   private int cancelledByDriver;
-
-  @OneToOne(mappedBy = "trip")
-  private Invoice invoice;
 
   // not null fields: passenger, startPoint, destination, requestDate, luggageCat
   /* default values:noOfStops = 0,
@@ -278,11 +277,5 @@ public class Trip implements Serializable {
     this.cancelledByDriver = cancelledByDriver;
   }
 
-  public Invoice getInvoice() {
-    return invoice;
-  }
 
-  public void setInvoice(Invoice invoice) {
-    this.invoice = invoice;
-  }
 }

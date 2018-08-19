@@ -28,8 +28,6 @@ public class Car implements Serializable {
   @Column(name = "deleted", columnDefinition = "TINYINT(1) UNSIGNED NULL DEFAULT 0")
   private int deleted;
 
-  @OneToMany(mappedBy = "car")
-  private Collection<DriverCar> driverCars;
 
   // all fields are not null
   /* default values: registrationDate = CURRENT_TIMESTAMP, maxPassengers = 4, deleted = 0 */
@@ -134,11 +132,4 @@ public class Car implements Serializable {
     this.deleted = deleted;
   }
 
-  public Collection<DriverCar> getDriverCars() {
-    return driverCars;
-  }
-
-  public void setDriverCars(Collection<DriverCar> driverCars) {
-    this.driverCars = driverCars;
-  }
 }

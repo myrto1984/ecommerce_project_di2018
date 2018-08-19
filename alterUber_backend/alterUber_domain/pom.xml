@@ -100,7 +100,6 @@
     <build>
         <finalName>alter-uber-service</finalName>
         <plugins>
-<!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -111,7 +110,6 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
--->
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.2.0</version>

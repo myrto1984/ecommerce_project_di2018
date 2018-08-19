@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `alterUber_DB`.`user_address` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(20) NOT NULL,
   `addressTitle` VARCHAR(20) NOT NULL,
-  `street_and_number` VARCHAR(255) NOT NULL,
+  `streetAndNumber` VARCHAR(255) NOT NULL,
   `municipality` VARCHAR(255) NOT NULL,
   `district` VARCHAR(255) NOT NULL,
   `postalCode` VARCHAR(5) NOT NULL,

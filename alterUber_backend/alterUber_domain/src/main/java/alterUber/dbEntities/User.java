@@ -22,6 +22,7 @@ public class User implements Serializable {
   private String photo;
 
   @ManyToOne
+  @JoinColumn(name = "role")
   private Role role;
 
   @Temporal(TemporalType.TIMESTAMP)
@@ -29,18 +30,6 @@ public class User implements Serializable {
 
   @Column(name = "deletedAccount", columnDefinition = "TINYINT(1) UNSIGNED NULL DEFAULT 0")
   private int deletedAccount;
-
-  @OneToMany(mappedBy = "user")
-  private Collection<UserAddress> userAddresses;
-
-  @OneToMany(mappedBy = "user")
-  private Collection<UserCreditCard> userCreditCards;
-
-  @OneToMany(mappedBy = "driver")
-  private Collection<DriverCar> driverCars;
-
-  @OneToMany(mappedBy = "passenger")
-  private Collection<Trip> trips;
 
   // all fields are NOT NULL
   /* default values:registrationDate = CURRENT_TIMESTAMP
@@ -172,35 +161,5 @@ public class User implements Serializable {
     this.deletedAccount = deletedAccount;
   }
 
-  public Collection<UserAddress> getUserAddresses() {
-    return userAddresses;
-  }
 
-  public void setUserAddresses(Collection<UserAddress> userAddresses) {
-    this.userAddresses = userAddresses;
-  }
-
-  public Collection<UserCreditCard> getUserCreditCards() {
-    return userCreditCards;
-  }
-
-  public void setUserCreditCards(Collection<UserCreditCard> userCreditCards) {
-    this.userCreditCards = userCreditCards;
-  }
-
-  public Collection<DriverCar> getDriverCars() {
-    return driverCars;
-  }
-
-  public void setDriverCars(Collection<DriverCar> driverCars) {
-    this.driverCars = driverCars;
-  }
-
-  public Collection<Trip> getTrips() {
-    return trips;
-  }
-
-  public void setTrips(Collection<Trip> trips) {
-    this.trips = trips;
-  }
 }

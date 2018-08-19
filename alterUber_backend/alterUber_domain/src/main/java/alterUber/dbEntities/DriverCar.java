@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Entity
 @XmlRootElement
-@Table(name = "driverCar")
+@Table(name = "driver_car")
 public class DriverCar implements Serializable {
 
   @Id
@@ -15,6 +15,7 @@ public class DriverCar implements Serializable {
   private long id;
 
   @ManyToOne
+  @JoinColumn(name = "driver")
   private User driver;
 
   @ManyToOne

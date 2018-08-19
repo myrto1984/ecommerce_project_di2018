@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-@Table(name = "userAddress")
+@Table(name = "user_address")
 public class UserAddress {
 
   @Id

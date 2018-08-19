@@ -7,7 +7,7 @@ import java.util.Collection;
 
 @Entity
 @XmlRootElement
-@Table(name = "userCreditCard")
+@Table(name = "user_credit_card")
 public class UserCreditCard {
 
   @Id
@@ -20,9 +20,6 @@ public class UserCreditCard {
   private String cardType;
   private String nameOnCard;
   private String securityCode;
-
-  @OneToMany(mappedBy = "card")
-  private Collection<CreditCardInInvoice> creditCardInInvoice;
 
 
   // all fields are not null
@@ -85,11 +82,5 @@ public class UserCreditCard {
     this.securityCode = securityCode;
   }
 
-  public Collection<CreditCardInInvoice> getCreditCardInInvoice() {
-    return creditCardInInvoice;
-  }
 
-  public void setCreditCardInInvoice(Collection<CreditCardInInvoice> creditCardInInvoice) {
-    this.creditCardInInvoice = creditCardInInvoice;
-  }
 }

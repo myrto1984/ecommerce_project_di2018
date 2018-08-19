@@ -6,7 +6,6 @@ import alterUber.utils.Constants;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -17,7 +16,7 @@ public class Invoice implements Serializable {
   @Id
   private String id;
 
-  @ManyToOne
+  @OneToOne
   @JoinColumn(name = "tripId")
   private Trip trip;
 
@@ -31,9 +30,6 @@ public class Invoice implements Serializable {
 
   @Column(name = "paidInCash", columnDefinition = "TINYINT(1) UNSIGNED NULL DEFAULT 1")
   private int paidInCash;
-
-  @OneToMany(mappedBy = "invoice")
-  private Collection<CreditCardInInvoice> creditCardInInvoice;
 
 
   // all fields are not null
@@ -125,11 +121,4 @@ public class Invoice implements Serializable {
     this.paidInCash = paidInCash;
   }
 
-  public Collection<CreditCardInInvoice> getCreditCardInInvoice() {
-    return creditCardInInvoice;
-  }
-
-  public void setCreditCardInInvoice(Collection<CreditCardInInvoice> creditCardInInvoice) {
-    this.creditCardInInvoice = creditCardInInvoice;
-  }
 }

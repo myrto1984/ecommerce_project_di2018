@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 @Entity @IdClass(CreditCardInInvoice.class)
 @XmlRootElement
+@Table(name = "credit_card_in_invoice")
 public class CreditCardInInvoice implements Serializable {
 
   @Id

@@ -1,6 +1,10 @@
 package alterUber.services;
 
+import alterUber.dbEntities.Role;
 import alterUber.dbEntities.User;
+import alterUber.dbEntities.UserAddress;
+import alterUber.repositories.RoleRepository;
+import alterUber.repositories.UserAddressRepository;
 import alterUber.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,11 +17,21 @@ public class UserServiceImpl implements UserService {
   @Autowired
   private UserRepository userRepository;
 
+  @Autowired
+  private RoleRepository roleRepository;
+
+
   @Override
   public List<User> getAllUsers() {
     List<User> users = new ArrayList<>();
     this.userRepository.findAll().forEach(e -> users.add(e));
     return users;
+  }
+
+  @Override
+  public List<User> getUsersByRole(String role) {
+    Role roleObj = this.roleRepository.findByRole(role);
+    return this.userRepository.findAllByRole(roleObj);
   }
 
   @Override
