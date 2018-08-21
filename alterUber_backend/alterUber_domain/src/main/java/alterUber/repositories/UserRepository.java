@@ -18,5 +18,5 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
   User findByUsername(String username);
 
-  List<User> findAllByRole(@Param("role") Role role);
+  List<User> findAllByRole(Role role);
 }

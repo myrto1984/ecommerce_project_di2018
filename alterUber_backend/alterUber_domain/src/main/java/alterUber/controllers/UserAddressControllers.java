@@ -1,0 +1,47 @@
+package alterUber.controllers;
+
+import alterUber.dbEntities.UserAddress;
+import alterUber.services.UserAddressService;
+import io.swagger.annotations.Api;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@Controller
+@RequestMapping(value = "/user-address")
+@Api(description = "User Address API", tags = "user-address")
+public class UserAddressControllers {
+
+  @Autowired
+  private UserAddressService userAddressService;
+
+
+  @PostMapping(value = "/addUserAddress")
+  public ResponseEntity<UserAddress> addUserAddress(@RequestBody UserAddress userAddress) {
+    return new ResponseEntity<>(this.userAddressService.addUserAddress(userAddress), HttpStatus.CREATED);
+  }
+
+
+  @PutMapping(value = "/updateUserAddress")
+  public ResponseEntity<UserAddress> updateUserAddress(@RequestBody UserAddress userAddress) {
+    return new ResponseEntity<>(this.userAddressService.updateUserAddress(userAddress), HttpStatus.OK);
+  }
+
+
+  @DeleteMapping(value = "/deleteUserAddress")
+  public boolean deleteUserAddress(@RequestBody UserAddress userAddress) {
+    return this.userAddressService.deleteUserAddress(userAddress);
+  }
+
+
+  @GetMapping("/getAllUserAddresses/{username}")
+  public ResponseEntity<List<UserAddress>> getAllUserAddresses(@PathVariable("username") String username) {
+    return new ResponseEntity<>(this.userAddressService.getAddressesOfUser(username), HttpStatus.OK);
+  }
+
+
+}

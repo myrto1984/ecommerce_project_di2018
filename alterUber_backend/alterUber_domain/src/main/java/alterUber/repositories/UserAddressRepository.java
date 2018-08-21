@@ -12,5 +12,5 @@ import java.util.List;
 
 public interface UserAddressRepository extends CrudRepository<UserAddress, Long> {
 
-  List<UserAddress> findAllByUser(@Param("user") User user);
+  List<UserAddress> findAllByUser(User user);
 }

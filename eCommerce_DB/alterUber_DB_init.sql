@@ -87,6 +87,7 @@ CREATE TABLE IF NOT EXISTS `alterUber_DB`.`user_credit_card` (
   `username` VARCHAR(20) NOT NULL,
   `cardType` VARCHAR(20) NOT NULL,
   `nameOnCard` VARCHAR(100) NOT NULL,
+  `expiresOn` DATETIME NOT NULL,
   `securityCode` VARCHAR(3) NOT NULL,
   PRIMARY KEY (`cardNo`),
   INDEX `fk_user_credit_card_username_idx` (`username` ASC),
@@ -204,16 +205,13 @@ ENGINE = InnoDB;
 -- Table `alterUber_DB`.`credit_card_in_invoice`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `alterUber_DB`.`credit_card_in_invoice` (
-  `cardNo` VARCHAR(20) NOT NULL,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `invoiceId` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`cardNo`, `invoiceId`),
+  `cardNo` VARCHAR(20) NOT NULL,
+  `cardType` VARCHAR(20) NOT NULL,
+  `nameOnCard` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`),
   INDEX `fk_credit_card_in_invoice_invoice_idx` (`invoiceId` ASC),
-  INDEX `fk_credit_card_in_invoice_card_idx` (`cardNo` ASC),
-  CONSTRAINT `fk_credit_card_in_invoice_card`
-    FOREIGN KEY (`cardNo`)
-    REFERENCES `alterUber_DB`.`user_credit_card` (`cardNo`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_credit_card_in_invoice_invoice`
     FOREIGN KEY (`invoiceId`)
     REFERENCES `alterUber_DB`.`invoice` (`invoiceId`)

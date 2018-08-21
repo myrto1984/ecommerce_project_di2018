@@ -4,38 +4,30 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
-@Entity @IdClass(CreditCardInInvoice.class)
+@Entity
 @XmlRootElement
 @Table(name = "credit_card_in_invoice")
 public class CreditCardInInvoice implements Serializable {
 
   @Id
-  @ManyToOne
-  @JoinColumn(name = "cardNo")
-  private UserCreditCard card;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
 
-  @Id
-  @ManyToOne
+  @OneToOne
   @JoinColumn(name = "invoiceId")
   private Invoice invoice;
+
+  private String cardNo;
+  private String cardType;
+  private String nameOnCard;
 
 
   // all fields are not null
 
   public CreditCardInInvoice () {}
 
-  public CreditCardInInvoice (UserCreditCard card, Invoice invoice) {
-    this.card = card;
+  public CreditCardInInvoice (Invoice invoice, String cardNo, String cardType, String nameOnCard) {
     this.invoice = invoice;
-  }
-
-
-  public UserCreditCard getCard() {
-    return card;
-  }
-
-  public void setCard(UserCreditCard card) {
-    this.card = card;
   }
 
 
@@ -47,4 +39,27 @@ public class CreditCardInInvoice implements Serializable {
     this.invoice = invoice;
   }
 
+  public String getCardNo() {
+    return cardNo;
+  }
+
+  public void setCardNo(String cardNo) {
+    this.cardNo = cardNo;
+  }
+
+  public String getCardType() {
+    return cardType;
+  }
+
+  public void setCardType(String cardType) {
+    this.cardType = cardType;
+  }
+
+  public String getNameOnCard() {
+    return nameOnCard;
+  }
+
+  public void setNameOnCard(String nameOnCard) {
+    this.nameOnCard = nameOnCard;
+  }
 }

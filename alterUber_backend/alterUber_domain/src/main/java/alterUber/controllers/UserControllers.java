@@ -27,9 +27,6 @@ public class UserControllers {
   private UserService userService;
 
   @Autowired
-  private RoleService roleService;
-
-  @Autowired
   private UserAddressService userAddressService;
 
   @GetMapping("/getIfUsernameExists/{username}")
@@ -60,40 +57,18 @@ public class UserControllers {
     if (!this.userService.addUser(user)) {
       return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
-    return new ResponseEntity<User>(user, HttpStatus.CREATED);
+    return new ResponseEntity<>(user, HttpStatus.CREATED);
   }
 
-  @PostMapping("/markAccountAsDeleted")
+  @PutMapping("/markAccountAsDeleted")
   public ResponseEntity<User> markAccountAsDeleted(@RequestBody User user) {
     user.setDeletedAccount(1);
-    return new ResponseEntity<User>(this.userService.updateUser(user), HttpStatus.OK);
+    return new ResponseEntity<>(this.userService.updateUser(user), HttpStatus.OK);
   }
 
   @PutMapping("/update")
   public ResponseEntity<User> update(@RequestBody User user) {
-    return new ResponseEntity<User>(this.userService.updateUser(user), HttpStatus.OK);
-  }
-
-
-  @GetMapping("/role/getAllRoles")
-  public ResponseEntity<List<Role>> getAllRoles() {
-    return new ResponseEntity<>(this.roleService.getAllRoles(), HttpStatus.OK);
-  }
-
-  @GetMapping("/role/getAllUsersWithRole/{role}")
-  public ResponseEntity<List<User>> getAllUsersWithRole(@PathVariable("role") String role) {
-    return new ResponseEntity<>(this.userService.getUsersByRole(role), HttpStatus.OK);
-  }
-
-
-  @PostMapping(value = "/address/addUserAddress", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-  public ResponseEntity<UserAddress> addUserAddress(@RequestBody UserAddress userAddress) {
-    return new ResponseEntity<>(this.userAddressService.addUserAddress(userAddress), HttpStatus.CREATED);
-  }
-
-  @GetMapping("/address/getAllUserAddresses/{username}")
-  public ResponseEntity<List<UserAddress>> getAllUserAddresses(@PathVariable("username") String username) {
-    return new ResponseEntity<>(this.userAddressService.getAddressesOfUser(username), HttpStatus.OK);
+    return new ResponseEntity<>(this.userService.updateUser(user), HttpStatus.OK);
   }
 
 

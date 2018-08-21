@@ -23,12 +23,15 @@ updateUser
 deleteUser
 getAllUsers
 getUserByUsername
+
 addCreditCard
 deleteCreditCard
+
 addAddress
 updateAddress
 deleteAddress
-addUserRole
+
+getUsersWithRole
 getRoles
 
 

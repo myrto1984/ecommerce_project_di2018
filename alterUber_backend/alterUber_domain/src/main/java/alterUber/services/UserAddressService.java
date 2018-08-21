@@ -12,5 +12,4 @@ public interface UserAddressService {
   List<UserAddress> getAddressesOfUser(String username);
 
 
-
 }

@@ -3,7 +3,7 @@ package alterUber.dbEntities;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Collection;
+import java.util.Date;
 
 @Entity
 @XmlRootElement
@@ -19,6 +19,10 @@ public class UserCreditCard {
 
   private String cardType;
   private String nameOnCard;
+
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date expiresOn;
+
   private String securityCode;
 
 
@@ -30,11 +34,13 @@ public class UserCreditCard {
                         User user,
                         String cardType,
                         String nameOnCard,
+                        Date expiresOn,
                         String securityCode) {
     this.cardNo = cardNo;
     this.user = user;
     this.cardType = cardType;
     this.nameOnCard = nameOnCard;
+    this.setExpiresOn(expiresOn);
     this.securityCode = securityCode;
   }
 
@@ -83,4 +89,11 @@ public class UserCreditCard {
   }
 
 
+  public Date getExpiresOn() {
+    return expiresOn;
+  }
+
+  public void setExpiresOn(Date expiresOn) {
+    this.expiresOn = expiresOn;
+  }
 }
