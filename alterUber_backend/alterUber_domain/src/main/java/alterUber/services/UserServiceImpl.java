@@ -50,12 +50,11 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public synchronized boolean addUser(User user) {
+  public synchronized User addUser(User user) {
     if (this.userRepository.fetchExistingUsername(user.getUsername()) > 0) {
-      return false;
+      return null;
     }
-    this.userRepository.save(user);
-    return true;
+    return this.userRepository.save(user);
   }
 
   @Override

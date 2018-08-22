@@ -13,7 +13,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(value = "/user-credit-card")
-@Api(description = "User Credit Card API", tags = "user-credit-card")
+@Api(description = "User Credit Card API", tags = {"user-credit-card"})
 public class UserCreditCardControllers {
 
   @Autowired
@@ -22,7 +22,11 @@ public class UserCreditCardControllers {
 
   @PostMapping(value = "/addUserCreditCard")
   public ResponseEntity<UserCreditCard> addUserCreditCard(@RequestBody UserCreditCard userCreditCard) {
-    return new ResponseEntity<>(this.userCreditCardService.addUserCreditCard(userCreditCard), HttpStatus.CREATED);
+    userCreditCard = this.userCreditCardService.addUserCreditCard(userCreditCard);
+    if (userCreditCard == null) {
+      return new ResponseEntity<>(HttpStatus.CONFLICT);
+    }
+    return new ResponseEntity<>(userCreditCard, HttpStatus.CREATED);
   }
 
 
@@ -33,8 +37,8 @@ public class UserCreditCardControllers {
 
 
   @DeleteMapping(value = "/deleteUserCreditCard")
-  public boolean deleteUserCreditCard(@RequestBody UserCreditCard userCreditCard) {
-    return this.userCreditCardService.deleteUserCreditCard(userCreditCard);
+  public ResponseEntity<Boolean> deleteUserCreditCard(@RequestBody UserCreditCard userCreditCard) {
+    return new ResponseEntity<>(this.userCreditCardService.deleteUserCreditCard(userCreditCard), HttpStatus.OK);
   }
 
 

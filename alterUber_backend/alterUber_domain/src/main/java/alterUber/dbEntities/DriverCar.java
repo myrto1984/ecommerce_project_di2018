@@ -55,11 +55,11 @@ public class DriverCar implements Serializable {
   }
 
 
-  public Car getCarCircNo() {
+  public Car getCar() {
     return car;
   }
 
-  public void setCarCircNo(Car car) {
+  public void setCar(Car car) {
     this.car = car;
   }
 

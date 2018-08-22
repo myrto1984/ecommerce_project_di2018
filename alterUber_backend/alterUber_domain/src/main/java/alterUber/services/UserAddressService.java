@@ -11,5 +11,4 @@ public interface UserAddressService {
   boolean deleteUserAddress(UserAddress userAddress);
   List<UserAddress> getAddressesOfUser(String username);
 
-
 }

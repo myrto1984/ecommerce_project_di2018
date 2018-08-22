@@ -14,7 +14,7 @@ import java.util.Date;
 public class Invoice implements Serializable {
 
   @Id
-  private String id;
+  private String invoiceId;
 
   @OneToOne
   @JoinColumn(name = "tripId")
@@ -41,7 +41,7 @@ public class Invoice implements Serializable {
 
   public Invoice (Trip trip, double distanceTravelled, int paidInCash) {
     this.trip = trip;
-    this.id = this.trip.getTripEndTime().toString() + "-" + this.trip.getId();
+    this.invoiceId = this.trip.getTripEndTime().toString() + "-" + this.trip.getId();
     this.dateIssued = new Date();
     this.chargePerKm = Constants.CHARGE_PER_KM;
     this.vat = Constants.VAT;
@@ -50,12 +50,12 @@ public class Invoice implements Serializable {
     this.paidInCash = paidInCash;
   }
 
-  public String getId() {
-    return id;
+  public String getInvoiceId() {
+    return invoiceId;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setInvoiceId(String invoiceId) {
+    this.invoiceId = invoiceId;
   }
 
 

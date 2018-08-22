@@ -2,6 +2,7 @@ package alterUber.repositories;
 
 import alterUber.dbEntities.User;
 import alterUber.dbEntities.UserAddress;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
@@ -13,4 +14,7 @@ import java.util.List;
 public interface UserAddressRepository extends CrudRepository<UserAddress, Long> {
 
   List<UserAddress> findAllByUser(User user);
+
+  @Query("SELECT count(ua) FROM UserAddress ua WHERE ua.user = :user AND ua.addressTitle = :addressTitle")
+  int fetchCountExistingUserAndAddressTitle(@Param("user") User user, @Param("addressTitle") String addressTitle);
 }

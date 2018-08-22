@@ -10,7 +10,7 @@ public interface UserService {
   List<User> getUsersByRole(String role);
   boolean getIfUsernameExists(String username);
   User getUser(String username, String password);
-  boolean addUser(User user);
+  User addUser(User user);
   User updateUser(User user);
   boolean deleteUser(User user);
 

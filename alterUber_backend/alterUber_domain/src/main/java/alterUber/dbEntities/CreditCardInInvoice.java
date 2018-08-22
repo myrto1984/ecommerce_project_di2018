@@ -62,4 +62,12 @@ public class CreditCardInInvoice implements Serializable {
   public void setNameOnCard(String nameOnCard) {
     this.nameOnCard = nameOnCard;
   }
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
 }

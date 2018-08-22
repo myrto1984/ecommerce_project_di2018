@@ -13,7 +13,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(value = "/user-address")
-@Api(description = "User Address API", tags = "user-address")
+@Api(description = "User Address API", tags = {"user-address"})
 public class UserAddressControllers {
 
   @Autowired
@@ -22,7 +22,11 @@ public class UserAddressControllers {
 
   @PostMapping(value = "/addUserAddress")
   public ResponseEntity<UserAddress> addUserAddress(@RequestBody UserAddress userAddress) {
-    return new ResponseEntity<>(this.userAddressService.addUserAddress(userAddress), HttpStatus.CREATED);
+    userAddress = this.userAddressService.addUserAddress(userAddress);
+    if (userAddress == null) {
+      return new ResponseEntity<>(HttpStatus.CONFLICT);
+    }
+    return new ResponseEntity<>(userAddress, HttpStatus.CREATED);
   }
 
 
@@ -33,8 +37,8 @@ public class UserAddressControllers {
 
 
   @DeleteMapping(value = "/deleteUserAddress")
-  public boolean deleteUserAddress(@RequestBody UserAddress userAddress) {
-    return this.userAddressService.deleteUserAddress(userAddress);
+  public ResponseEntity<Boolean> deleteUserAddress(@RequestBody UserAddress userAddress) {
+    return new ResponseEntity<>(this.userAddressService.deleteUserAddress(userAddress), HttpStatus.OK);
   }
 
 

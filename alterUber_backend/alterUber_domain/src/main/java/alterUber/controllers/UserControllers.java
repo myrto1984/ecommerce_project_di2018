@@ -26,9 +26,6 @@ public class UserControllers {
   @Autowired
   private UserService userService;
 
-  @Autowired
-  private UserAddressService userAddressService;
-
   @GetMapping("/getIfUsernameExists/{username}")
   public ResponseEntity<Boolean> getIfUsernameExists(@PathVariable("username") String username) {
     return new ResponseEntity<>(this.userService.getIfUsernameExists(username), HttpStatus.OK);
@@ -54,7 +51,8 @@ public class UserControllers {
 
   @PostMapping("/register")
   public ResponseEntity<User> register(@RequestBody User user) {
-    if (!this.userService.addUser(user)) {
+    user = this.userService.addUser(user);
+    if (user == null) {
       return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
     return new ResponseEntity<>(user, HttpStatus.CREATED);

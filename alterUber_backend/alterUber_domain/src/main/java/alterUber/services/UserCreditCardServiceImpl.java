@@ -21,6 +21,9 @@ public class UserCreditCardServiceImpl implements UserCreditCardService {
 
   @Override
   public UserCreditCard addUserCreditCard(UserCreditCard userCreditCard) {
+    if (this.userCreditCardRepository.countCardsByNo(userCreditCard.getCardNo()) > 0) {
+      return null;
+    }
     return this.userCreditCardRepository.save(userCreditCard);
   }
 

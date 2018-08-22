@@ -20,7 +20,10 @@ public class UserAddressServiceImpl implements UserAddressService {
 
 
   @Override
-  public UserAddress addUserAddress(UserAddress userAddress) {
+  public synchronized UserAddress addUserAddress(UserAddress userAddress) {
+    if (this.userAddressRepository.fetchCountExistingUserAndAddressTitle(userAddress.getUser(), userAddress.getAddressTitle()) > 0) {
+      return null;
+    }
     return this.userAddressRepository.save(userAddress);
   }
 
@@ -32,7 +35,7 @@ public class UserAddressServiceImpl implements UserAddressService {
   @Override
   public boolean deleteUserAddress(UserAddress userAddress) {
     this.userAddressRepository.delete(userAddress);
-    return (this.userAddressRepository.findById(userAddress.getId()).isPresent());
+    return !this.userAddressRepository.findById(userAddress.getId()).isPresent();
   }
 
   @Override
