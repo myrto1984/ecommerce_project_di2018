@@ -1,6 +1,5 @@
 package services;
 
-import dbEntities.User;
 import dbEntities.UserAddress;
 
 import java.util.List;

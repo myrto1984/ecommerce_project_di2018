@@ -1,6 +1,5 @@
 package services;
 
-import dbEntities.Role;
 import dbEntities.User;
 
 import java.util.List;

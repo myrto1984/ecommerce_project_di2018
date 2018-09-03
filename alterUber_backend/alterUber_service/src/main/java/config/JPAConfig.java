@@ -19,7 +19,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories("alterUber.repositories")
+@EnableJpaRepositories("repositories")
 @PropertySource("classpath:application.properties")
 public class JPAConfig {
 

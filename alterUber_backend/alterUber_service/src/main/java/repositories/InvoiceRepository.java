@@ -2,7 +2,6 @@ package repositories;
 
 import dbEntities.Invoice;
 import dbEntities.Trip;
-import io.swagger.models.auth.In;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

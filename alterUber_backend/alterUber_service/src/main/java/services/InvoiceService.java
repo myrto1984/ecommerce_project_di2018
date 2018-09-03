@@ -1,7 +1,6 @@
 package services;
 
 import dbEntities.Invoice;
-import dbEntities.Trip;
 
 import java.util.List;
 

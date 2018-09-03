@@ -10,7 +10,10 @@
                             http://www.springframework.org/schema/context
                             http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="alterUber" />
+    <context:component-scan base-package="config" />
+    <context:component-scan base-package="controllers" />
+    <context:component-scan base-package="repositories" />
+    <context:component-scan base-package="services" />
     <bean name="jackson2ObjectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
         <property name="indentOutput" value="true"/>
     </bean>
@@ -25,5 +28,5 @@
 
     <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>
     <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
-    <bean class="alterUber.config.SwaggerConfig"/>
+    <bean class="config.SwaggerConfig"/>
 </beans>

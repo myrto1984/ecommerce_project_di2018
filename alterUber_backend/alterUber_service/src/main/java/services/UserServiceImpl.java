@@ -3,7 +3,6 @@ package services;
 import dbEntities.Role;
 import dbEntities.User;
 import repositories.RoleRepository;
-import repositories.UserAddressRepository;
 import repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

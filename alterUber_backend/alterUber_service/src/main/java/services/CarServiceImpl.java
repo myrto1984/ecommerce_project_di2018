@@ -1,8 +1,8 @@
 package services;
 
 import dbEntities.Car;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import repositories.CarRepository;
-import repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
