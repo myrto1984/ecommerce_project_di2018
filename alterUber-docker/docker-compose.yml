@@ -1,0 +1,32 @@
+version: "3.1"
+
+services:
+  tomcat:
+    container_name: tomcat
+    build: ../alterUber_backend/alterUber_service
+    ports:
+      - "8080:8080"
+    links:
+      - db
+    networks:
+      - ubernet
+    restart: unless-stopped
+
+  db:
+    container_name: postgres
+    build: ../eCommerce_DB
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+    networks:
+      - ubernet
+    restart: unless-stopped
+
+volumes:
+  data:
+    driver: local
+
+networks:
+  ubernet:
+    driver: bridge
