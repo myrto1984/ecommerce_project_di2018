@@ -12,6 +12,7 @@
 
 **/*.idea
 **/*.iml
+.iml
 
 
 # Sensitive or high-churn files:
