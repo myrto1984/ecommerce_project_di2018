@@ -1,4 +1,4 @@
-package com.webapplication.dto.user;
+package utils;
 
 
 import java.time.LocalDateTime;

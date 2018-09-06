@@ -1,12 +1,11 @@
-package com.webapplication.authentication;
+package authentication;
 
-import com.webapplication.dto.user.SessionInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import utils.SessionInfo;
 
 import java.time.Clock;
-import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
