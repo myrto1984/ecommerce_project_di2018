@@ -13,19 +13,14 @@ services:
     restart: unless-stopped
 
   db:
-    container_name: mysql
+    container_name: postgres
     build: ../eCommerce_DB
     ports:
-      - "3307:3306"
-    volumes:
-      - data:/var/lib/mysql/data
+      - "5432:5432"
+
     networks:
       - ubernet
     restart: unless-stopped
-    environment:
-       MYSQL_ROOT_PASSWORD: root
-       MYSQL_USER: ecommerce
-       MYSQL_PASSWORD: eCom@di2018
 
 volumes:
   data:

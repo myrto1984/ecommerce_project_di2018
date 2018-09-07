@@ -1,18 +1,15 @@
 -- MySQL Workbench Forward Engineering
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+--SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+--SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+--SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
+CREATE USER ecommerce WITH PASSWORD 'eCom@di2018';
+CREATE DATABASE alterUber_DB WITH OWNER ecommerce;
 -- -----------------------------------------------------
 -- Schema alterUber_DB
 -- -----------------------------------------------------
 
--- -----------------------------------------------------
--- Schema alterUber_DB
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `alterUber_DB` DEFAULT CHARACTER SET utf8 ;
-USE `alterUber_DB` ;
 
 -- -----------------------------------------------------
 -- Table `alterUber_DB`.`roles`
