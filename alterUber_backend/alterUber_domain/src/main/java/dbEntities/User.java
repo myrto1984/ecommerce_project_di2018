@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity
 @XmlRootElement
-@Table(name = "user")
+@Table(name = "uber_users")
 public class User implements Serializable {
 
   @Id
