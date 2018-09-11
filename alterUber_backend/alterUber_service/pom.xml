@@ -96,6 +96,14 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.2</version>
+                <configuration>
+                    <webappDirectory>/opt/tomcat/webapps/alter-uber-service</webappDirectory>
+                </configuration>
+            </plugin>
         </plugins>
         <finalName>alter-uber-service</finalName>
         <resources>
