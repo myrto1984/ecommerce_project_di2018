@@ -1,3 +1,4 @@
+/*
 package alterUber.config;
 
 import org.springframework.context.annotation.ComponentScan;
@@ -23,4 +24,4 @@ public class AppConfig implements WebMvcConfigurer {
     builder.indentOutput(true);
     converters.add(new MappingJackson2HttpMessageConverter(builder.build()));
   }
-}
+}*/

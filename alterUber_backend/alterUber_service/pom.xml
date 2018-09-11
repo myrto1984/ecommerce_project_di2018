@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>alterUber_backend</groupId>
-    <artifactId>alterUber_domain</artifactId>
+    <artifactId>alterUber_service</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <parent>
@@ -115,7 +115,7 @@
                 <version>3.2.0</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <warName>alterUber_domain</warName>
+                    <warName>alterUber_service</warName>
                 </configuration>
             </plugin>
         </plugins>
