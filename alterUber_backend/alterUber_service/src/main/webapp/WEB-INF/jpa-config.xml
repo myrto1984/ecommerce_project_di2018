@@ -14,7 +14,7 @@
 
     <context:property-placeholder location="classpath:application.properties"/>
 
-    <jpa:repositories base-package="alterUber"/>
+    <jpa:repositories base-package="dbEntities"/>
 
     <bean id="basicDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${db.driverClassName}" />
