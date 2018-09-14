@@ -29,6 +29,11 @@ public class DriverCarServiceImpl implements DriverCarService {
     if (this.driverCarRepository.fetchCountExistingDriverAndCar(driverCar.getDriver(), driverCar.getCar()) > 0) {
       return null;
     }
+
+    /* insert new Car if necessary */
+    if (this.carRepository.fetchExistingCirculationNo(driverCar.getCar().getCirculationNo()) == 0) {
+      this.carRepository.save(driverCar.getCar());
+    }
     return this.driverCarRepository.save(driverCar);
   }
 

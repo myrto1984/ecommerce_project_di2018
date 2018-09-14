@@ -5,7 +5,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 @Entity
-@XmlRootElement
 @Table(name = "credit_card_in_invoice")
 public class CreditCardInInvoice implements Serializable {
 

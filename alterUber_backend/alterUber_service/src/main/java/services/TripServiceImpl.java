@@ -76,5 +76,24 @@ public class TripServiceImpl implements TripService {
     return trips;
   }
 
+  @Override
+  public double getAverageRatingOfPassengerForDrivers (String passenger) {
+    return this.tripRepository.fetchAvgRatingOfPassengerForDrivers(passenger);
+  }
+
+  @Override
+  public double getAverageRatingForPassenger (String passenger) {
+    return this.tripRepository.fetchAvgRatingForPassenger(passenger);
+  }
+
+  @Override
+  public double getAverageRatingForDriver (String driver) {
+    return this.tripRepository.fetchAvgRatingForDriver(driver);
+  }
+
+  @Override
+  public double getAverageRatingForCar (String car) {
+    return this.tripRepository.fetchAvgRatingForCar(car);
+  }
 
 }

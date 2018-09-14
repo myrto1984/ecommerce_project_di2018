@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@XmlRootElement
 @Table(name = "trip")
 public class Trip implements Serializable {
 

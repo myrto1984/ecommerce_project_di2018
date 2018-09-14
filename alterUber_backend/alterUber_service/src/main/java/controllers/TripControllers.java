@@ -1,6 +1,7 @@
 package controllers;
 
 import dbEntities.Trip;
+import dbEntities.User;
 import services.TripService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,26 @@ public class TripControllers {
   @GetMapping(value = "/getTripsOfCar/{circulationNo}")
   public ResponseEntity<List<Trip>> getTripsOfCar(@PathVariable("circulationNo") String circulationNo) {
     return new ResponseEntity<>(this.tripService.getTripsOfCar(circulationNo), HttpStatus.OK);
+  }
+
+  @GetMapping(value = "/getAvgRatingOfPassengerForDrivers/{passengerUsername}")
+  public ResponseEntity<Double> getAvgRatingOfPassengerForDrivers(@PathVariable("passengerUsername") String passenger) {
+    return new ResponseEntity<>(this.tripService.getAverageRatingOfPassengerForDrivers(passenger), HttpStatus.OK);
+  }
+
+  @GetMapping(value = "/getAvgRatingForPassenger/{passengerUsername}")
+  public ResponseEntity<Double> getAvgRatingForPassenger(@PathVariable("passengerUsername") String passenger) {
+    return new ResponseEntity<>(this.tripService.getAverageRatingForPassenger(passenger), HttpStatus.OK);
+  }
+
+  @GetMapping(value = "/getAvgRatingForDriver/{driverUsername}")
+  public ResponseEntity<Double> getAvgRatingForDriver(@PathVariable("driverUsername") String driver) {
+    return new ResponseEntity<>(this.tripService.getAverageRatingForDriver(driver), HttpStatus.OK);
+  }
+
+  @GetMapping(value = "/getAvgRatingForCar/{carLicencePlate}")
+  public ResponseEntity<Double> getAvgRatingForCar(@PathVariable("carLicencePlate") String car) {
+    return new ResponseEntity<>(this.tripService.getAverageRatingForCar(car), HttpStatus.OK);
   }
 
 }

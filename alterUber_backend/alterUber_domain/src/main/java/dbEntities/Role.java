@@ -6,7 +6,6 @@ import java.io.Serializable;
 
 
 @Entity
-@XmlRootElement
 @Table(name = "roles")
 public class Role implements Serializable {
 

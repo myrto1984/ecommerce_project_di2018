@@ -6,7 +6,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 @Entity
-@XmlRootElement
 @Table(name = "user_credit_card")
 public class UserCreditCard {
 

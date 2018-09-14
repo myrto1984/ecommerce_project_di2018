@@ -1,5 +1,6 @@
 package repositories;
 
+import dbEntities.Car;
 import dbEntities.DriverCar;
 import dbEntities.Trip;
 import dbEntities.User;
@@ -20,4 +21,21 @@ public interface TripRepository extends CrudRepository<Trip, Long> {
 
   @Query("SELECT t FROM Trip t WHERE t.id = :tripId")
   Trip fetchById(@Param("tripId") long tripId);
+
+  @Query(value = "SELECT COALESCE(AVG(t.passengerRatingOfDriver), 0.0) FROM trip t WHERE t.passenger = :passenger",
+         nativeQuery = true)
+  double fetchAvgRatingOfPassengerForDrivers(@Param("passenger") String passenger);
+
+  @Query(value = "SELECT COALESCE(AVG(t.driverRatingOfPassenger), 0.0) FROM trip t WHERE t.passenger = :passenger",
+         nativeQuery = true)
+  double fetchAvgRatingForPassenger(@Param("passenger") String passenger);
+
+  @Query(value = "SELECT COALESCE(AVG(t.passengerRatingOfDriver),0.0) FROM trip t, driver_car dc WHERE t.driverCar = dc.id AND dc.driver = :driver",
+          nativeQuery = true)
+  double fetchAvgRatingForDriver(@Param("driver") String driver);
+
+  @Query(value = "SELECT COALESCE(AVG(t.passengerRatingOfCar),0.0) FROM trip t, driver_car dc WHERE t.driverCar = dc.id AND dc.carCircNo = :car",
+         nativeQuery = true)
+  double fetchAvgRatingForCar(@Param("car") String car);
+
 }

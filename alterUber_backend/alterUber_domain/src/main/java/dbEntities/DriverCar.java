@@ -1,12 +1,18 @@
 package dbEntities;
 
+import org.hibernate.engine.internal.Cascade;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import static javax.persistence.CascadeType.ALL;
 
 
 @Entity
-@XmlRootElement
 @Table(name = "driver_car")
 public class DriverCar implements Serializable {
 
@@ -25,6 +31,8 @@ public class DriverCar implements Serializable {
   @Column(name = "deleted", columnDefinition = "TINYINT(1) UNSIGNED NULL DEFAULT 0")
   private int deleted;
 
+/*  @OneToMany(cascade=ALL, mappedBy="driverCar", fetch = FetchType.LAZY)
+  private Collection<Trip> trips = new ArrayList<>();*/
 
   // all fields are not null
 

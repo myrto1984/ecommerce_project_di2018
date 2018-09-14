@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@XmlRootElement
 @Table(name = "invoice")
 public class Invoice implements Serializable {
 

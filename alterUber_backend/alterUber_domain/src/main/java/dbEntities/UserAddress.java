@@ -5,7 +5,6 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@XmlRootElement
 @Table(name = "user_address")
 public class UserAddress {
 

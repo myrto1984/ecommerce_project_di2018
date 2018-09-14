@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@XmlRootElement
 @Table(name = "car")
 public class Car implements Serializable {
 

@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@XmlRootElement
 @Table(name = "user")
 public class User implements Serializable {
 
